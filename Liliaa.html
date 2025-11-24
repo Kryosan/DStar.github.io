@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Hari Guru</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4a6fa5;
+            --secondary-color: #6b8cbc;
+            --accent-color: #ff9e44;
+            --text-color: #333;
+            --white: #fff;
+            --light-gray: #f5f5f5;
+            --dark-gray: #7a7a7a;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+            position: relative;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            text-align: center;
+            transition: all 1s ease-in-out;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #e6f0ff, #c2d9ff);
+            color: var(--text-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        body.blue-theme {
+            background: linear-gradient(135deg, #e6f0ff, #c2d9ff);
+        }
+
+        body.pink-theme {
+            background: linear-gradient(135deg, #ffe6f0, #ffc2d9);
+        }
+
+        body.sweet-theme {
+            background: linear-gradient(135deg, #fff0e6, #ffd9c2);
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            margin: 20px 0;
+            padding-top: 80px;
+            transition: all 0.5s ease;
+            z-index: 100;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            font-size: 2rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .question {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: var(--text-color);
+            line-height: 1.5;
+        }
+
+        .options {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .option {
+            padding: 12px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            font-size: 1rem;
+            min-width: 120px;
+        }
+
+        .option-primary {
+            background-color: var(--primary-color);
+            color: white;
+            border: 2px solid var(--primary-color);
+        }
+
+        .option-secondary {
+            background-color: var(--white);
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .option:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .image-corner {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            top: -75px;
+            right: 20px;
+            border: 5px solid white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+            transition: all 0.5s;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Name Input Styles */
+        #name-input {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 3000;
+        }
+
+        #name-form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 400px;
+        }
+
+        #name-form input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        #name-form button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            width: 100%;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Gender Selection */
+        #gender-selection {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .gender-option {
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid var(--primary-color);
+            background-color: white;
+            color: var(--primary-color);
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .gender-option.selected {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* Message Form Styles */
+        #message-deny-form input,
+        #message-deny-form textarea,
+        #liliaa-wishes-form textarea,
+        #teacher-wishes-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 2px solid var(--primary-color);
+            border-radius: 10px;
+            font-family: 'Montserrat', sans-serif;
+            resize: vertical;
+            min-height: 44px;
+            box-sizing: border-box;
+        }
+
+        #message-deny-form button[type="submit"],
+        #liliaa-wishes-form button,
+        #teacher-wishes-form button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            transition: all 0.3s;
+            font-family: 'Montserrat', sans-serif;
+            margin-top: 10px;
+        }
+
+        #message-deny-form button[type="submit"]:hover,
+        #liliaa-wishes-form button:hover,
+        #teacher-wishes-form button:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .thank-you {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--text-color);
+        }
+
+        /* Loading Spinner */
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top: 4px solid var(--primary-color);
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+            display: none;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Animation Container */
+        .animation-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        /* Hearts Animation - IMPROVED */
+        .hearts {
+            position: absolute;
+            font-size: 24px;
+            animation: float 8s linear infinite;
+            opacity: 0;
+            z-index: 2;
+            pointer-events: none;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Flowers Animation - IMPROVED */
+        .flowers {
+            position: absolute;
+            font-size: 20px;
+            animation: float-flower 10s linear infinite;
+            opacity: 0;
+            z-index: 2;
+            pointer-events: none;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        @keyframes float-flower {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Special Message Styles */
+        .special-message {
+            background-color: rgba(255, 158, 68, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        /* Popup Animation */
+        .popup-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            z-index: 10000;
+            text-align: center;
+            max-width: 90%;
+            width: 400px;
+            transition: transform 0.5s ease;
+        }
+
+        .popup-message.active {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .popup-message h2 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-family: 'Dancing Script', cursive;
+        }
+
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 9999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+        }
+
+        .popup-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        /* Cute Animation for Liliaa */
+        .cute-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            z-index: 11000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1s ease;
+        }
+
+        .cute-animation.active {
+            opacity: 1;
+        }
+
+        .cute-bubble {
+            background-color: white;
+            border-radius: 50%;
+            padding: 15px;
+            margin: 10px;
+            animation: bounce 2s infinite alternate;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            font-size: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 60px;
+            height: 60px;
+        }
+
+        @keyframes bounce {
+            0% { transform: translateY(0) scale(1); }
+            100% { transform: translateY(-20px) scale(1.1); }
+        }
+
+        /* Music Control */
+        .music-control {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 2000;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+        }
+
+        .music-control:hover {
+            transform: scale(1.1);
+        }
+
+        .music-control i {
+            font-size: 24px;
+            color: var(--primary-color);
+        }
+
+        /* Error Message */
+        .error-message {
+            color: #e74c3c;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .question {
+                font-size: 1rem;
+            }
+            
+            .option {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+                min-width: 100px;
+            }
+            
+            .image-corner {
+                width: 100px;
+                height: 100px;
+                top: -50px;
+                right: 10px;
+            }
+
+            .container {
+                padding-top: 70px;
+            }
+
+            .popup-message {
+                width: 90%;
+                padding: 20px;
+            }
+
+            .music-control {
+                top: 10px;
+                right: 10px;
+                width: 40px;
+                height: 40px;
+            }
+
+            .music-control i {
+                font-size: 20px;
+            }
+
+            .cute-bubble {
+                width: 50px;
+                height: 50px;
+                padding: 12px;
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .container {
+                padding: 20px;
+                padding-top: 60px;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+                margin-bottom: 20px;
+            }
+            
+            .options {
+                gap: 10px;
+                margin-top: 20px;
+            }
+            
+            .image-corner {
+                width: 80px;
+                height: 80px;
+                top: -40px;
+            }
+
+            #gender-selection {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body class="blue-theme">
+    <!-- Animation Container -->
+    <div class="animation-container" id="animation-container"></div>
+
+    <!-- Music Control -->
+    <div class="music-control" id="music-control">
+        <i class="fas fa-volume-up"></i>
+    </div>
+
+    <!-- Audio Element -->
+    <audio id="background-music" loop>
+        <source src="iykyk.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Name Input Screen -->
+    <div id="name-input">
+        <div id="name-form">
+            <h2 style="color: var(--primary-color);">Selamat Hari Guru!</h2>
+            <p style="margin-bottom: 15px;">Masukkan nama Anda untuk melanjutkan</p>
+            <input type="text" id="user-name" placeholder="Nama Anda" required>
+            
+            <div id="gender-selection">
+                <div class="gender-option" data-gender="Pak">Pak Guru</div>
+                <div class="gender-option" data-gender="Bu">Bu Guru</div>
+            </div>
+            
+            <button onclick="processName()">Lanjutkan</button>
+        </div>
+    </div>
+
+    <!-- Initial Greeting for Bu Liliaa -->
+    <div id="Liliaa-greeting" class="container hidden">
+        <img src="hay.jpg" alt="Guru" class="image-corner">
+        <h1>Halo Bu Liliaa yang cantik, manis, imut, lucu, mungil, baik hati dan penyayang serta tidak sombong</h1>
+        <div class="options">
+            <button class="option option-primary" onclick="showResponse('Liliaa-response')">Halo juga Deny, murid yang ngeselin</button>
+        </div>
+    </div>
+
+    <!-- Greeting for Other Teachers -->
+    <div id="teacher-greeting" class="container hidden">
+        <img src="malu.jpeg" alt="Guru" class="image-corner">
+        <h1 id="teacher-greeting-text">Selamat Hari Guru!</h1>
+        <div class="options">
+            <button class="option option-primary" onclick="showResponse('teacher-response')">Terima Kasih</button>
+        </div>
+    </div>
+
+    <!-- Special Message for Bu Liliaa -->
+    <div id="Liliaa-message1" class="container hidden">
+        <img src="ym.jpeg" alt="Guru" class="image-corner">
+        <h1>Selamat Hari Guru ya Bu Liliaa</h1>
+        <div class="question">Terima kasih ya Bu Liliaa atas semua ilmu, bimbingan, dan kesabaran yang telah Bu Liliaa berikan kepada kami semua. Terima kasih juga karena Bu Liliaa mau bersabar mengajar kami meskipun kami terkadang kurang ajar sama ibu, mwehehe </div>
+        <div class="options">
+            <button class="option option-primary" onclick="showResponse('Liliaa-message2')">...</button>
+        </div>
+    </div>
+
+    <!-- Second Message for Bu Liliaa -->
+    <div id="Liliaa-message2" class="container hidden">
+        <img src="lopeyu.jpeg" alt="Guru" class="image-corner">
+        <h1>Sesuatu yang mungkin Bu Lilia gak tahu</h1>
+        <div class="question">Tahu gak Bu? Jujur saya Bangga dan Bersyukur lho bisa dipertemukan sama Bu Liliaa.</div>
+        <div class="options">
+            <button class="option option-primary" onclick="showResponse('Liliaa-message3')">Oh ya?</button>
+        </div>
+    </div>
+
+    <!-- Apology Message for Bu Liliaa -->
+    <div id="Liliaa-message3" class="container hidden">
+        <img src="peyuk.jpeg" alt="Guru" class="image-corner">
+        <h1>Iya dongg</h1>
+        <div class="question">Kok bisa? Yaa bisa dong, mwahaha. jadi begini Bu 
+        Pertemuan sama Bu Liliaa itu mengajarkan saya kalo belajar bukan hanya tentang nilai, tapi juga tentang proses sama karakter. Bagi saya Bu Liliaa bukan haya sekedar Guru, Bagi saya Bu Liliaa adalah sosok yang tidak hanya "mengajar" tetapi juga "mendidik". Nasihat-nasihat, Perhatian, dan Kasih sayang Bu Liliaa di sela-sela pelajaran seringkali lebih berharga daripada materi itu sendiri. Terima kasih telah membentuk kami menjadi pribadi yang lebih baik. Selamat Hari Guru! Sekali lagi, Terimakasih ya Bu Liliaa. Kami sayang Ibu🫶🫶🫶</div>
+        <div class="options">
+            <button class="option option-primary" onclick="showResponse('Liliaa-message4')">...</button>
+        </div>
+    </div>
+    
+    <!-- Apology Message for Bu Liliaa -->
+    <div id="Liliaa-message4" class="container hidden">
+        <img src="sadd.jpeg" alt="Guru" class="image-corner">
+        <h1>Permintaan Maaf</h1>
+        <div class="question">Saya minta maaf jika selama ini banyak salah, banyak tingkah, dan banyak membuat Bu Liliaa marah. tak lupa juga permintaan maaf saya karena telah membuat Bu Liliaa menanggis diawal pertemuan, mwehehe maap ya Bu..</div>
+        <div class="options">
+            <button class="option option-primary" onclick="showResponse('Liliaa-wishes')">Kiirim pesan untuk Deny</button>
+        </div>
+    </div>
+
+    <!-- Wishes for Bu Liliaa -->
+    <div id="Liliaa-wishes" class="container hidden">
+        <img src="love2.jpeg" alt="Guru" class="image-corner">
+        <h1>Sebuah Harapan</h1>
+        <div class="question">Sebelum mengirim pesan untuk Deny, tuliskan sebuah harapan yang ingin Bu Liliaa tuliskan sebagai seorang guru:</div>
+        <form id="liliaa-wishes-form">
+            <textarea id="liliaa-personal-wishes" name="wishes" placeholder="Tuliskan harapan di sini..." required rows="4"></textarea>
+            <button type="button" class="option option-primary" onclick="saveLiliaaWishesAndContinue()">Lanjutkan</button>
+        </form>
+    </div>
+
+    <!-- Thank You Message for Other Teachers -->
+    <div id="teacher-thankyou" class="container hidden">
+        <img src="sip.jpeg" alt="Guru" class="image-corner">
+        <h1 id="teacher-thankyou-title">Terima Kasih Banyak</h1>
+        <div class="question" id="teacher-thankyou-text">
+            Atas semua ilmu, bimbingan, dan kesabaran yang telah diberikan kepada kami semua. 
+            Kami sangat menghargai jasa-jasa Bapak/Ibu Guru.
+        </div>
+        <div class="options">
+            <button class="option option-primary" onclick="showResponse('teacher-wishes')">Lanjut</button>
+        </div>
+    </div>
+
+    <!-- Wishes for Other Teachers -->
+    <div id="teacher-wishes" class="container hidden">
+        <img src="senyum.jpeg" alt="Guru" class="image-corner">
+        <h1>Harapan untuk Kedepannya</h1>
+        <div class="question" id="teacher-wishes-text">
+             Terima kasih untuk semua ilmu dan kebaikan yang telah Bapak dan berikan. Di masa depan, kami tidak hanya berharap kesuksesan untuk diri kami, tetapi juga untuk Bapak dan Ibu. Semoga selalu diberikan kesehatan, kelimpahan kebahagiaan, dan terus diberi kekuatan untuk menginspirasi lebih banyak lagi generasi penerus bangsa.
+        </div>
+        <div class="options">
+            <button class="option option-primary" onclick="showResponse('teacher-personal-wishes')">Lanjut</button>
+        </div>
+    </div>
+
+    <!-- Personal Wishes for Other Teachers -->
+    <div id="teacher-personal-wishes" class="container hidden">
+        <img src="heeh.jpeg" alt="Guru" class="image-corner">
+        <h1>Sebuah Harapan</h1>
+        <div class="question">Tuliskan sebuah harapan yang ingin Bapak/Ibu sampaikan sebagai seorang guru:</div>
+        <form id="teacher-wishes-form">
+            <textarea id="personal-wishes" name="wishes" placeholder="Tuliskan sebuah harapan di sini..." required rows="4"></textarea>
+            <button type="button" class="option option-primary" onclick="saveWishesAndContinue()">Lanjutkan</button>
+        </form>
+    </div>
+
+    <!-- Wishes Confirmation for Other Teachers -->
+    <div id="teacher-wishes-confirm" class="container hidden">
+        <img src="love2.jpeg" alt="Guru" class="image-corner">
+        <h1>Semoga Harapan Terkabul</h1>
+        <div class="question" id="wishes-confirm-text">
+            Semoga apa yang Bapak/Ibu harapkan dapat terkabulkan dan menjadi berkah bagi banyak orang.
+        </div>
+        <div class="special-message">
+            <p>Selamat Hari Guru, Terimakasih Untuk segalanya.</p>
+        </div>
+        <div class="options">
+            <button class="option option-primary" onclick="showMessageToDenyForm()">Kirim Pesan untuk Deny</button>
+        </div>
+    </div>
+
+    <!-- Message to Deny Form -->
+    <div id="message-deny-container" class="container hidden">
+        <img src="puisi1.jpeg" alt="Guru" class="image-corner">
+        <h1>💌 Pesan untuk Deny 💌</h1>
+        <div class="thank-you">Silahkan untuk mengisi pesan di sini</div>
+        
+        <form id="message-deny-form">
+            <input type="hidden" id="teacher-fullname" name="teacher_name" value="">
+            <input type="hidden" id="teacher-wishes-data" name="teacher_wishes" value="">
+            <input type="hidden" id="device-info" name="device_info" value="">
+            <input type="hidden" id="timestamp" name="timestamp" value="">
+            
+            <input type="text" id="from-teacher" name="from" placeholder="Dari (nama Anda)" value="" readonly required>
+            <input type="text" id="to-deny" name="to" value="Deny" readonly required>
+            <textarea id="deny-message" name="message" placeholder="Tuliskan pesan untuk Deny di sini" required rows="4"></textarea>
+            <button type="submit">Kirim Pesan</button>
+        </form>
+        <div class="spinner" id="deny-message-spinner"></div>
+        <div id="deny-message-success" style="display: none; color: var(--primary-color); margin-top: 15px;">
+            Pesanmu telah terkirim! ❤️
+        </div>
+        <div class="error-message" id="deny-message-error">
+            Gagal mengirim pesan. Silakan coba lagi.
+        </div>
+    </div>
+
+    <!-- Final Greeting for Bu Liliaa -->
+    <div id="Liliaa-final" class="container hidden">
+        <img src="ilove.jpeg" alt="Guru" class="image-corner">
+        <h1>💕 Selamat Hari Guru yaa Bu Liliaa 💕</h1>
+        <div class="question">Semoga selalu sehat, bahagia, dan sukses dalam mendidik generasi bangsa.</div>
+        <div class="special-message">
+            <p>Dari muridmu yang paling pendiam dan selalu mengagumimu,</p>
+            <p><strong>Deny Joestar</strong></p>
+        </div>
+    </div>
+
+    <!-- Final Greeting for Other Teachers -->
+    <div id="teacher-final" class="container hidden">
+        <img src="ganyu1.jpeg" alt="Guru" class="image-corner">
+        <h1 id="teacher-final-title">💕 Selamat Hari Guru 💕</h1>
+        <div class="question" id="teacher-final-text">
+            Semoga selalu sehat, bahagia, dan sukses dalam mendidik generasi bangsa.
+        </div>
+    </div>
+
+    <!-- Popup Message -->
+    <div class="popup-overlay" id="popup-overlay"></div>
+    <div class="popup-message" id="popup-message">
+        <h2 id="popup-title">Selamat Hari Guru!</h2>
+        <p id="popup-text">Terima kasih telah mengirim pesan!</p>
+        <button class="option option-primary" onclick="closePopup()" style="margin-top: 15px;">Tutup</button>
+    </div>
+
+    <!-- Cute Animation for Liliaa -->
+    <div class="cute-animation" id="cute-animation">
+        <div class="cute-bubble">💕</div>
+        <div class="cute-bubble">🌸</div>
+        <div class="cute-bubble">✨</div>
+        <div class="cute-bubble">💝</div>
+        <div class="cute-bubble">🌺</div>
+        <div class="cute-bubble">🦋</div>
+    </div>
+
+    <script>
+        // Data storage
+        let currentUser = null;
+        let userGender = null;
+        let isLiliaa = false;
+        let musicPlaying = true;
+        let animationInterval = null;
+        let personalWishes = "";
+        let liliaaWishes = "";
+        let isAnimationRunning = false;
+        
+        // Special names for Bu Liliaa
+        const LiliaaNames = ["Lia", "Fadlia", "Asadila", "Liliaa"];
+        
+        // DOM Elements
+        const backgroundMusic = document.getElementById('background-music');
+        const musicControl = document.getElementById('music-control');
+        const animationContainer = document.getElementById('animation-container');
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Show name input first
+            document.getElementById('name-input').style.display = 'flex';
+            
+            // Hide all other containers
+            document.querySelectorAll('.container').forEach(el => {
+                el.classList.add('hidden');
+            });
+
+            // Setup gender selection
+            setupGenderSelection();
+            
+            // Setup form submit
+            setupFormSubmit();
+            
+            // Setup music control
+            setupMusicControl();
+            
+            // Start background music
+            startBackgroundMusic();
+        });
+
+        // Setup gender selection
+        function setupGenderSelection() {
+            const genderOptions = document.querySelectorAll('.gender-option');
+            genderOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    // Remove selected class from all options
+                    genderOptions.forEach(opt => opt.classList.remove('selected'));
+                    
+                    // Add selected class to clicked option
+                    this.classList.add('selected');
+                    
+                    // Store selected gender
+                    userGender = this.getAttribute('data-gender');
+                });
+            });
+        }
+
+        // Setup music control
+        function setupMusicControl() {
+            musicControl.addEventListener('click', function() {
+                if (musicPlaying) {
+                    backgroundMusic.pause();
+                    musicControl.innerHTML = '<i class="fas fa-volume-mute"></i>';
+                    musicPlaying = false;
+                } else {
+                    backgroundMusic.play();
+                    musicControl.innerHTML = '<i class="fas fa-volume-up"></i>';
+                    musicPlaying = true;
+                }
+            });
+        }
+
+        // Start background music
+        function startBackgroundMusic() {
+            // Try to play music with user interaction
+            document.getElementById('name-form').addEventListener('click', function() {
+                if (backgroundMusic.paused) {
+                    backgroundMusic.volume = 0.5;
+                    const playPromise = backgroundMusic.play();
+                    
+                    if (playPromise !== undefined) {
+                        playPromise.then(_ => {
+                            musicPlaying = true;
+                        }).catch(error => {
+                            console.log("Autoplay prevented:", error);
+                        });
+                    }
+                }
+            }, { once: true });
+        }
+
+        // Get device information
+        function getDeviceInfo() {
+            const userAgent = navigator.userAgent;
+            let deviceType = 'Desktop';
+            
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent)) {
+                deviceType = 'Mobile';
+            } else if (/Tablet|iPad/i.test(userAgent)) {
+                deviceType = 'Tablet';
+            }
+            
+            return {
+                device_type: deviceType,
+                user_agent: userAgent,
+                platform: navigator.platform,
+                language: navigator.language,
+                screen_resolution: `${screen.width}x${screen.height}`
+            };
+        }
+
+        // Get current timestamp
+        function getCurrentTimestamp() {
+            const now = new Date();
+            const options = { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                timeZone: 'Asia/Jakarta'
+            };
+            return now.toLocaleDateString('id-ID', options);
+        }
+
+        // Process name input
+        function processName() {
+            const userName = document.getElementById('user-name').value.trim();
+            
+            if (userName === '') {
+                alert('Silakan masukkan nama Anda!');
+                return;
+            }
+            
+            if (!userGender) {
+                alert('Silakan pilih jenis kelamin!');
+                return;
+            }
+            
+            currentUser = userName;
+            document.getElementById('name-input').style.display = 'none';
+            
+            // Check if the name is one of the special names for Bu Liliaa
+            isLiliaa = LiliaaNames.some(name => 
+                userName.toLowerCase().includes(name.toLowerCase())
+            );
+            
+            // Change background based on name
+            if (isLiliaa) {
+                document.body.className = 'pink-theme';
+                document.getElementById('Liliaa-greeting').classList.remove('hidden');
+                if (!isAnimationRunning) {
+                    startHeartsAnimation();
+                }
+            } else if (userName.toLowerCase().includes('manis') || userName.toLowerCase().includes('sweet')) {
+                document.body.className = 'sweet-theme';
+                document.getElementById('teacher-greeting-text').textContent = 
+                    `Selamat Hari Guru ${userGender} ${userName}!`;
+                document.getElementById('teacher-greeting').classList.remove('hidden');
+                if (!isAnimationRunning) {
+                    startFlowersAnimation();
+                }
+            } else {
+                document.body.className = 'blue-theme';
+                document.getElementById('teacher-greeting-text').textContent = 
+                    `Selamat Hari Guru ${userGender} ${userName}!`;
+                document.getElementById('teacher-greeting').classList.remove('hidden');
+            }
+            
+            // Ensure music is playing
+            if (musicPlaying && backgroundMusic.paused) {
+                backgroundMusic.play();
+            }
+        }
+
+        // Start hearts animation - IMPROVED (tidak terputus)
+        function startHeartsAnimation() {
+            // Clear any existing animation
+            if (animationInterval) {
+                clearInterval(animationInterval);
+            }
+            
+            // Clear container
+            animationContainer.innerHTML = '';
+            
+            const hearts = ['❤️', '💖', '💗', '💓', '💞', '💕', '💘', '💝'];
+            
+            // Create initial batch of hearts
+            for (let i = 0; i < 15; i++) {
+                createFloatingElement(hearts, 'hearts', true);
+            }
+            
+            // Continue creating hearts at intervals
+            animationInterval = setInterval(() => {
+                createFloatingElement(hearts, 'hearts', true);
+            }, 500);
+            
+            isAnimationRunning = true;
+        }
+
+        // Start flowers animation - IMPROVED (tidak terputus)
+        function startFlowersAnimation() {
+            // Clear any existing animation
+            if (animationInterval) {
+                clearInterval(animationInterval);
+            }
+            
+            // Clear container
+            animationContainer.innerHTML = '';
+            
+            const flowers = ['🌸', '🌹', '💐', '🌺', '🌷', '🏵️', '🌻', '🌼'];
+            
+            // Create initial batch of flowers
+            for (let i = 0; i < 12; i++) {
+                createFloatingElement(flowers, 'flowers', true);
+            }
+            
+            // Continue creating flowers at intervals
+            animationInterval = setInterval(() => {
+                createFloatingElement(flowers, 'flowers', true);
+            }, 600);
+            
+            isAnimationRunning = true;
+        }
+
+        // Create floating element (hearts or flowers) - IMPROVED
+        function createFloatingElement(elements, className, continuous = false) {
+            const element = document.createElement('div');
+            element.className = className;
+            element.textContent = elements[Math.floor(Math.random() * elements.length)];
+            
+            // Random position within viewport
+            const left = Math.random() * 100;
+            element.style.left = `${left}vw`;
+            
+            // Random size
+            const size = Math.random() * 20 + 20;
+            element.style.fontSize = `${size}px`;
+            
+            // Random animation duration
+            const duration = continuous ? (Math.random() * 5 + 8) : (Math.random() * 5 + 5);
+            element.style.animationDuration = `${duration}s`;
+            
+            // Random delay for continuous animation
+            if (continuous) {
+                element.style.animationDelay = `${Math.random() * 2}s`;
+            }
+            
+            animationContainer.appendChild(element);
+            
+            // Remove element after animation completes
+            setTimeout(() => {
+                if (element.parentNode) {
+                    element.remove();
+                }
+            }, duration * 1000);
+        }
+
+        // Stop all animations
+        function stopAnimations() {
+            if (animationInterval) {
+                clearInterval(animationInterval);
+                animationInterval = null;
+            }
+            animationContainer.innerHTML = '';
+            isAnimationRunning = false;
+        }
+
+        // Save wishes for Bu Liliaa and continue
+        function saveLiliaaWishesAndContinue() {
+            const wishesText = document.getElementById('liliaa-personal-wishes').value.trim();
+            
+            if (wishesText === '') {
+                alert('Silakan tuliskan harapan Bu Liliaa terlebih dahulu.');
+                return;
+            }
+            
+            liliaaWishes = wishesText;
+            showMessageToDenyForm();
+        }
+
+        // Save wishes for other teachers and continue
+        function saveWishesAndContinue() {
+            const wishesText = document.getElementById('personal-wishes').value.trim();
+            
+            if (wishesText === '') {
+                alert('Silakan tuliskan sebuah harapan terlebih dahulu.');
+                return;
+            }
+            
+            personalWishes = wishesText;
+            
+            // Update confirmation text with the user's wishes
+            document.getElementById('wishes-confirm-text').innerHTML = 
+                `Semoga apa yang ${userGender} ${currentUser} harapkan dapat terkabulkan dan menjadi berkah bagi banyak orang.<br><br>
+                <strong>Harapan ${userGender} ${currentUser}:</strong><br>
+                "${personalWishes}"`;
+            
+            showResponse('teacher-wishes-confirm');
+        }
+
+        // Setup FormSubmit - IMPROVED dengan error handling
+        function setupFormSubmit() {
+            const form = document.getElementById('message-deny-form');
+            const errorMsg = document.getElementById('deny-message-error');
+            
+            form.onsubmit = async (e) => {
+                e.preventDefault();
+                
+                const spinner = document.getElementById('deny-message-spinner');
+                const successMsg = document.getElementById('deny-message-success');
+                
+                // Reset messages
+                successMsg.style.display = 'none';
+                errorMsg.style.display = 'none';
+                
+                try {
+                    spinner.style.display = 'block';
+                    
+                    // Prepare data for FormSubmit
+                    const teacherFullName = `${userGender} ${currentUser}`;
+                    const wishesData = isLiliaa ? liliaaWishes : personalWishes;
+                    const deviceInfo = getDeviceInfo();
+                    const timestamp = getCurrentTimestamp();
+                    const denyMessage = document.getElementById('deny-message').value;
+                    
+                    // Validate message
+                    if (!denyMessage.trim()) {
+                        throw new Error('Pesan untuk Deny tidak boleh kosong');
+                    }
+                    
+                    // Create form data for FormSubmit
+                    const formData = new FormData();
+                    formData.append('_subject', `Pesan Hari Guru dari ${teacherFullName}`);
+                    formData.append('teacher_name', teacherFullName);
+                    formData.append('teacher_wishes', wishesData);
+                    formData.append('message_to_deny', denyMessage);
+                    formData.append('device_info', JSON.stringify(deviceInfo));
+                    formData.append('timestamp', timestamp);
+                    formData.append('_replyto', 'noreply@hariguru.com');
+                    formData.append('_template', 'table');
+                    formData.append('_captcha', 'false');
+                    
+                    // Send to FormSubmit
+                    const response = await fetch('https://formsubmit.co/ajax/dewudd2@gmail.com', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    
+                    const result = await response.json();
+                    
+                    if (response.ok && result.success) {
+                        spinner.style.display = 'none';
+                        successMsg.style.display = 'block';
+                        
+                        setTimeout(() => {
+                            if (isLiliaa) {
+                                // Show cute animation for Liliaa
+                                document.getElementById('cute-animation').classList.add('active');
+                                
+                                setTimeout(() => {
+                                    document.getElementById('cute-animation').classList.remove('active');
+                                    showPopup(
+                                        "Selamat Hari Guru Bu Liliaa", 
+                                        `Selamat Hari Guru Bu Liliaa yang Cantik, Imut, Lucu, Manis, dan Baik Hati serta tidak sombong<br><br>
+                                        <strong>Harapan Bu Liliaa:</strong><br>
+                                        "${liliaaWishes}"`
+                                    );
+                                }, 3000);
+                            } else {
+                                showPopup(
+                                    "Selamat Hari Guru", 
+                                    `Selamat Hari Guru ${userGender} ${currentUser}<br><br>
+                                    <strong>Harapan ${userGender} ${currentUser}:</strong><br>
+                                    "${personalWishes}"`
+                                );
+                            }
+                        }, 2000);
+                    } else {
+                        throw new Error(result.message || 'Gagal mengirim pesan');
+                    }
+                    
+                } catch (error) {
+                    console.error('Error:', error);
+                    spinner.style.display = 'none';
+                    errorMsg.style.display = 'block';
+                    errorMsg.textContent = error.message || 'Gagal mengirim pesan. Silakan coba lagi.';
+                }
+            };
+        }
+
+        // Show message to Deny form
+        function showMessageToDenyForm() {
+            document.querySelectorAll('.container').forEach(el => {
+                el.classList.add('hidden');
+            });
+            document.getElementById('message-deny-container').classList.remove('hidden');
+            document.getElementById('from-teacher').value = `${userGender} ${currentUser}`;
+            
+            // Reset form state
+            document.getElementById('deny-message-success').style.display = 'none';
+            document.getElementById('deny-message-error').style.display = 'none';
+            document.getElementById('deny-message').value = '';
+            
+            // For Bu Liliaa, animation continues without interruption
+            if (isLiliaa && !isAnimationRunning) {
+                startHeartsAnimation();
+            }
+        }
+
+        // Show popup message
+        function showPopup(title, text) {
+            document.getElementById('popup-title').textContent = title;
+            document.getElementById('popup-text').innerHTML = text;
+            document.getElementById('popup-overlay').classList.add('active');
+            document.getElementById('popup-message').classList.add('active');
+        }
+
+        // Close popup
+        function closePopup() {
+            document.getElementById('popup-overlay').classList.remove('active');
+            document.getElementById('popup-message').classList.remove('active');
+            
+            // Show final message after closing popup
+            setTimeout(() => {
+                if (isLiliaa) {
+                    document.getElementById('message-deny-container').classList.add('hidden');
+                    document.getElementById('Liliaa-final').classList.remove('hidden');
+                    // Animation continues for Bu Liliaa
+                } else {
+                    document.getElementById('message-deny-container').classList.add('hidden');
+                    
+                    // Set final message for other teachers
+                    document.getElementById('teacher-final-title').textContent = 
+                        `💕 Selamat Hari Guru ${userGender} ${currentUser} 💕`;
+                    document.getElementById('teacher-final-text').textContent = 
+                        `Semoga selalu sehat, bahagia, dan sukses dalam mendidik generasi bangsa.`;
+                    
+                    document.getElementById('teacher-final').classList.remove('hidden');
+                }
+            }, 500);
+        }
+
+        // Show response based on user choice - IMPROVED (animasi tidak terputus untuk Bu Liliaa)
+        function showResponse(choice) {
+            // Hide all screens first
+            document.querySelectorAll('.container').forEach(el => {
+                el.classList.add('hidden');
+            });
+
+            switch (choice) {
+                case 'Liliaa-response':
+                    document.getElementById('Liliaa-message1').classList.remove('hidden');
+                    // Animation continues without restarting
+                    break;
+                case 'Liliaa-message2':
+                    document.getElementById('Liliaa-message2').classList.remove('hidden');
+                    break;
+                case 'Liliaa-message3':
+                    document.getElementById('Liliaa-message3').classList.remove('hidden');
+                    break;
+                case 'Liliaa-message4':
+                    document.getElementById('Liliaa-message4').classList.remove('hidden');
+                    break;
+                case 'Liliaa-wishes':
+                    document.getElementById('Liliaa-wishes').classList.remove('hidden');
+                    break;
+                case 'teacher-response':
+                    // Set message for other teachers
+                    document.getElementById('teacher-thankyou-title').textContent = 
+                        `Terima Kasih ${userGender} ${currentUser}`;
+                    document.getElementById('teacher-thankyou-text').textContent = 
+                        `Atas semua ilmu, bimbingan, dan kesabaran yang telah ${userGender} ${currentUser} berikan kepada kami semua. 
+                        Kami sangat menghargai jasa-jasa ${userGender} ${currentUser}.`;
+                    document.getElementById('teacher-thankyou').classList.remove('hidden');
+                    break;
+                case 'teacher-wishes':
+                    document.getElementById('teacher-wishes').classList.remove('hidden');
+                    break;
+                case 'teacher-personal-wishes':
+                    document.getElementById('teacher-personal-wishes').classList.remove('hidden');
+                    break;
+                case 'teacher-wishes-confirm':
+                    document.getElementById('teacher-wishes-confirm').classList.remove('hidden');
+                    break;
+            }
+        }
+    </script>
+</body>
+</html>
